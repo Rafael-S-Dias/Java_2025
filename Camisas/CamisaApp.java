@@ -36,6 +36,7 @@ public class CamisaApp {
                         break;
 
                     case 2:
+                         limpar();
                          if (list.isEmpty()){
                         System.out.println("Lista Vazia!");
                     } else {
@@ -48,6 +49,7 @@ public class CamisaApp {
                     }
 
                     case 3:
+                        limpar();
                         if (list.isEmpty()) {
                             System.out.println("Não há dados para serem excluidos!");
                         } else {
