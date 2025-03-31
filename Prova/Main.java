@@ -2,15 +2,14 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
-    /**
-     * @param args
-     */
+    static int MAX_AVIOES = 4;
+    static int MAX_RESERVAS = 20;
+    static ArrayList<Aviao> avioes = new ArrayList<>();
+    static ArrayList<Reserva> reservas = new ArrayList<>();
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        ArrayList<Aviao> avioes = new ArrayList<>();
-        ArrayList<Passageiro> passageiros = new ArrayList<>();
-        ArrayList<Assentos> assentos = new ArrayList<>();
-
+        
         while (true) {
             System.out.println("\n");
             System.out.println("Digite a opção desejada: ");
@@ -24,88 +23,92 @@ public class Main {
 
             switch (opcao) {
                 case 1:
-                    System.out.println("\n");
-                    System.out.println("INFORME OS NÚMEROS DOS QUATRO AVIÕES ");
-                    System.out.println("Digite o números do primeiro avião: ");
-                    int primeiroAviao = scanner.nextInt();
-
-                    System.out.println("Digite o números do segundo avião: ");
-                    int segundoAviao = scanner.nextInt();
-
-                    System.out.println("Digite o números do terceiro avião: ");
-                    int terceiroAviao = scanner.nextInt();
-
-                    System.out.println("Digite o números do quarto avião: ");
-                    int quartoAviao = scanner.nextInt();
-
-
-                    avioes.add(new Aviao(primeiroAviao));
-                    avioes.add(new Aviao(segundoAviao));
-                    avioes.add(new Aviao(terceiroAviao));
-                    avioes.add(new Aviao(quartoAviao));
-                    
+                    if (!avioes.isEmpty()) {
+                        System.out.println("Os aviões já foram registrados.");
+                        return;
+                    }
+                    for (int i = 0; i < MAX_AVIOES; i++) {
+                        System.out.print("Informe o número do " +(i + 1)+ "º avião: ");
+                        int numero = scanner.nextInt();
+                        avioes.add(new Aviao(numero, 0));
+                    }
                     break;
                     
                     case 2:
-                    System.out.println("\n");
-                    System.out.println("INFORME A QUANTIDADE DE ASSENTOS DE CADA AVIÃO ");
-                    System.out.println("Digite a quantidade de assentos do primeiro avião: ");
-                    int assentos1 = scanner.nextInt();
-                    
-                    System.out.println("Digite a quantidade de assentos do segundo avião: ");
-                    int assentos2 = scanner.nextInt();
-                    
-                    System.out.println("Digite a quantidade de assentos do terceiro avião: ");
-                    int assentos3 = scanner.nextInt();
-                    
-                    System.out.println("Digite a quantidade de assentos do quarto avião: ");
-                    int assentos4 = scanner.nextInt();
-
-                    assentos.add(new Assentos(assentos1));
-                    assentos.add(new Assentos(assentos2));
-                    assentos.add(new Assentos(assentos3));
-                    assentos.add(new Assentos(assentos4));
-                    
-                    break;
-                case 3:
-                    System.out.println("\n");
-                    int i = 0;
-                    if (i<=20) {
-                        System.out.println("Digite o número do avião desejado: ");
-                        int verificaAviao = scanner.nextInt();
-
-                        if (avioes.get(verificaAviao) != null) {
-                            System.out.println("Este avião não existe!");
-
-                        } else {
-                            if (assentos.isEmpty()) {
-                                System.out.println("Não há assentos disponiveis para esse avião");
-                            } else {
-                                System.out.println("Escreva o nome do passageiro: ");
-                                String nome = scanner.next();
-                                passageiros.add(new Passageiro(verificaAviao,nome));
-                                System.out.println("Reserva realizada com sucesso!");
-                                i++;
-                            }
+                        if (avioes.isEmpty()) {
+                            System.out.println("Registre os aviões primeiro.");
+                            return;
                         }
+                        for (Aviao x : avioes) {
+                            System.out.print("Informe o número de assentos disponíveis para do avião nº" +x.getNumero()+ " :"  );
+                            int assentos = scanner.nextInt();
+                            x.setAssentosDisponiveis(assentos);
+                        }
+                        System.out.println("Assentos registrados com sucesso!");
+                    break;
 
-                    } else {
-                        System.out.println("Quantidade de reservas excedidas");
+                case 3:
+                    if (reservas.size() >= MAX_RESERVAS) {
+                        System.out.println("Limite máximo de reservas atingido!");
+                        return;
+                    }
+                    System.out.print("Informe o número do avião: ");
+                    int numeroAviao = scanner.nextInt();
+                    scanner.nextLine();
+                    
+                    Aviao y = encontrarAviao(numeroAviao);
+                    if (y == null) {
+                        System.out.println("Este avião não existe!");
+                        return;
+                    }
+                    if (y.getAssentosDisponiveis() == 0) {
+                        System.out.println("Não há assentos disponíveis para este avião!");
+                        return;
                     }
                     
+                    System.out.print("Informe o nome do passageiro: ");
+                    String passageiro = scanner.nextLine();
+                    reservas.add(new Reserva(numeroAviao, passageiro));
+                    y.reduzirAssento();
+                    System.out.println("Reserva realizada com sucesso!");
                     break;
+
                 case 4:
-                    int x = 0;
-                    for(x=0; x < avioes.size(); x++) {
-                        System.out.println("");
+                    System.out.print("Informe o número do avião: ");
+                    int numeroAviao2 = scanner.nextInt();
+                    scanner.nextLine();
+
+                    Aviao z = encontrarAviao(numeroAviao2);
+                    if (z == null) {
+                        System.out.println("Este avião não existe!");
+                        return;
+                    }
+                    
+                    int j = 0;
+                    for (Reserva reserva : reservas) {
+                        if (reserva.getNumeroAviao() == numeroAviao2) {
+                            System.out.println("Passageiro: " + reserva.getPassageiro());
+                            j++;
+                        }
+                    }
+                    if (j == 0) {
+                        System.out.println("Não há reservas realizadas para este avião!");
                     }
                     break;
+
                 case 5:
-                    System.out.println("Informe o nome do passageiro: ");
-                    String verificaNome = scanner.nextLine();
-                    int y = 0;
-                    for(y=0; y < passageiros.size(); y++) {
-                        System.out.println("O passageiro "+passageiros.get(verificaNome));
+                    System.out.print("Informe o nome do passageiro: ");
+                    String nome = scanner.nextLine();
+
+                    int l = 0;
+                    for (Reserva reserva : reservas) {
+                        if (reserva.getPassageiro().equalsIgnoreCase(nome)) {
+                            System.out.println("Avião: " + reserva.getNumeroAviao());
+                            l++;
+                        }
+                    }
+                    if (l == 0) {
+                        System.out.println("Não há reservas realizadas para este passageiro!");
                     }
                     break;
                 case 6:
@@ -114,9 +117,20 @@ public class Main {
                     break;
             
                 default:
+                    System.out.println("Opção inválida!");
                     break;
             }
-            
+
+            scanner.close();
         }
+    }
+    
+    private static Aviao encontrarAviao(int numero) {
+        for (Aviao aviao : avioes) {
+            if (aviao.getNumero() == numero) {
+                return aviao;
+            }
+        }
+        return null;
     }
 }
