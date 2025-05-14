@@ -11,7 +11,6 @@ package com.mycompany.consultorio_fuboca.modelo;
 public class Medico {
     private int idMedico;
     private String crm;
-    private String nomeMedico;
     private String especializacao;
     private String primeiroNomeMedico;
     private String nomeDoMeioMedico;
@@ -20,21 +19,19 @@ public class Medico {
     public Medico() {
     }
 
-    public Medico(String crm, String nomeMedico, String especializacao,
+    public Medico(String crm, String especializacao,
                   String primeiroNomeMedico, String nomeDoMeioMedico, String ultimoNomeMedico) {
         this.crm = crm;
-        this.nomeMedico = nomeMedico;
         this.especializacao = especializacao;
         this.primeiroNomeMedico = primeiroNomeMedico;
         this.nomeDoMeioMedico = nomeDoMeioMedico;
         this.ultimoNomeMedico = ultimoNomeMedico;
     }
 
-    public Medico(int idMedico, String crm, String nomeMedico, String especializacao,
+    public Medico(int idMedico, String crm, String especializacao,
                   String primeiroNomeMedico, String nomeDoMeioMedico, String ultimoNomeMedico) {
         this.idMedico = idMedico;
         this.crm = crm;
-        this.nomeMedico = nomeMedico;
         this.especializacao = especializacao;
         this.primeiroNomeMedico = primeiroNomeMedico;
         this.nomeDoMeioMedico = nomeDoMeioMedico;
@@ -55,14 +52,6 @@ public class Medico {
 
     public void setCrm(String crm) {
         this.crm = crm;
-    }
-
-    public String getNomeMedico() {
-        return nomeMedico;
-    }
-
-    public void setNomeMedico(String nomeMedico) {
-        this.nomeMedico = nomeMedico;
     }
 
     public String getEspecializacao() {

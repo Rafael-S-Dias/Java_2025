@@ -17,11 +17,10 @@ import java.util.ArrayList;
 public class MedicoDAO {
 
     public void inserir(Medico medico) {
-        String sql = "INSERT INTO medico (crm, nomeMedico, especializacao, primeiroNomeMedico, nomeDoMeioMedico, ultimoNomeMedico) VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO medico (crm, especializacao, primeiroNomeMedico, nomeDoMeioMedico, ultimoNomeMedico) VALUES (?, ?, ?, ?, ?)";
         try (Connection conn = ConexaoMySQL.conectar();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, medico.getCrm());
-            stmt.setString(2, medico.getNomeMedico());
             stmt.setString(3, medico.getEspecializacao());
             stmt.setString(4, medico.getPrimeiroNomeMedico());
             stmt.setString(5, medico.getNomeDoMeioMedico());
@@ -42,7 +41,6 @@ public class MedicoDAO {
                 Medico m = new Medico(
                     rs.getInt("idMedico"),
                     rs.getString("crm"),
-                    rs.getString("nomeMedico"),
                     rs.getString("especializacao"),
                     rs.getString("primeiroNomeMedico"),
                     rs.getString("nomeDoMeioMedico"),
@@ -57,11 +55,10 @@ public class MedicoDAO {
     }
 
     public void atualizar(Medico medico) {
-        String sql = "UPDATE medico SET crm = ?, nomeMedico = ?, especializacao = ?, primeiroNomeMedico = ?, nomeDoMeioMedico = ?, ultimoNomeMedico = ? WHERE idMedico = ?";
+        String sql = "UPDATE medico SET crm = ?, especializacao = ?, primeiroNomeMedico = ?, nomeDoMeioMedico = ?, ultimoNomeMedico = ? WHERE idMedico = ?";
         try (Connection conn = ConexaoMySQL.conectar();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, medico.getCrm());
-            stmt.setString(2, medico.getNomeMedico());
             stmt.setString(3, medico.getEspecializacao());
             stmt.setString(4, medico.getPrimeiroNomeMedico());
             stmt.setString(5, medico.getNomeDoMeioMedico());

@@ -16,8 +16,8 @@ public class MedicoControle {
 
     private MedicoDAO dao = new MedicoDAO();
 
-    public void cadastrar(String crm, String nomeMedico, String especializacao, String primeiroNome, String nomeDoMeio, String ultimoNome) {
-        Medico m = new Medico(crm, nomeMedico, especializacao, primeiroNome, nomeDoMeio, ultimoNome);
+    public void cadastrar(String crm, String especializacao, String primeiroNome, String nomeDoMeio, String ultimoNome) {
+        Medico m = new Medico(crm, especializacao, primeiroNome, nomeDoMeio, ultimoNome);
         dao.inserir(m);
     }
 
@@ -25,8 +25,8 @@ public class MedicoControle {
         return dao.listar();
     }
 
-    public void atualizar(int idMedico, String crm, String nomeMedico, String especializacao, String primeiroNome, String nomeDoMeio, String ultimoNome) {
-        Medico m = new Medico(idMedico, crm, nomeMedico, especializacao, primeiroNome, nomeDoMeio, ultimoNome);
+    public void atualizar(int idMedico, String crm, String especializacao, String primeiroNome, String nomeDoMeio, String ultimoNome) {
+        Medico m = new Medico(idMedico, crm, especializacao, primeiroNome, nomeDoMeio, ultimoNome);
         dao.atualizar(m);
     }
 

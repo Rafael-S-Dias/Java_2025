@@ -8,12 +8,12 @@ package com.mycompany.consultorio_fuboca;
  *
  * @author aluno.den
  */
-import com.mycompany.consultorio_fuboca.view.TelaInicial;
+import com.mycompany.consultorio_fuboca.view.Tela;
 
 public class Consultorio_Fuboca {
 
     public static void main(String[] args) {
-        TelaInicial t = new TelaInicial();
+        Tela t = new Tela();
         t.setVisible(true);
     }
 }
