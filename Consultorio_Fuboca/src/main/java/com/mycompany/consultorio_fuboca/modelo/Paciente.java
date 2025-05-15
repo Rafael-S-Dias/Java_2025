@@ -10,7 +10,6 @@ package com.mycompany.consultorio_fuboca.modelo;
  */
 public class Paciente {
     private int idPaciente;
-    private String nomePaciente;
     private String cpf;
     private String ddd;
     private String numTelefone;
@@ -22,9 +21,8 @@ public class Paciente {
     }
 
  
-    public Paciente(String nomePaciente, String cpf, String ddd, String numTelefone,
+    public Paciente(String cpf, String ddd, String numTelefone,
                     String primeiroNomePaciente, String nomeDoMeioPaciente, String ultimoNomePaciente) {
-        this.nomePaciente = nomePaciente;
         this.cpf = cpf;
         this.ddd = ddd;
         this.numTelefone = numTelefone;
@@ -33,10 +31,9 @@ public class Paciente {
         this.ultimoNomePaciente = ultimoNomePaciente;
     }
 
-    public Paciente(int idPaciente, String nomePaciente, String cpf, String ddd, String numTelefone,
+    public Paciente(int idPaciente, String cpf, String ddd, String numTelefone,
                     String primeiroNomePaciente, String nomeDoMeioPaciente, String ultimoNomePaciente) {
         this.idPaciente = idPaciente;
-        this.nomePaciente = nomePaciente;
         this.cpf = cpf;
         this.ddd = ddd;
         this.numTelefone = numTelefone;
@@ -51,14 +48,6 @@ public class Paciente {
 
     public void setIdPaciente(int idPaciente) {
         this.idPaciente = idPaciente;
-    }
-
-    public String getNomePaciente() {
-        return nomePaciente;
-    }
-
-    public void setNomePaciente(String nomePaciente) {
-        this.nomePaciente = nomePaciente;
     }
 
     public String getCpf() {

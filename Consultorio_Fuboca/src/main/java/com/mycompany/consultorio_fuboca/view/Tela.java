@@ -31,19 +31,19 @@ public class Tela extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         btnCadastrarMedico = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem7 = new javax.swing.JMenuItem();
-        jMenuItem8 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
+        btnAlterarMedico = new javax.swing.JMenuItem();
+        btnListarMedicos = new javax.swing.JMenuItem();
+        btnDeletarMedico = new javax.swing.JMenuItem();
+        btnCadastrarPaciente = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        jMenuItem9 = new javax.swing.JMenuItem();
-        jMenuItem11 = new javax.swing.JMenuItem();
+        btnAlterarPaciente = new javax.swing.JMenuItem();
+        btnListarPacientes = new javax.swing.JMenuItem();
+        btnDeletarPaciente = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
-        jMenuItem10 = new javax.swing.JMenuItem();
-        jMenuItem12 = new javax.swing.JMenuItem();
+        btnCadastrarConsulta = new javax.swing.JMenuItem();
+        btnAlterarConsulta = new javax.swing.JMenuItem();
+        btnListarConsultas = new javax.swing.JMenuItem();
+        btnDeletarConsulta = new javax.swing.JMenuItem();
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
@@ -82,18 +82,23 @@ public class Tela extends javax.swing.JFrame {
         });
         jMenu1.add(btnCadastrarMedico);
 
-        jMenuItem4.setText("Alterar");
-        jMenu1.add(jMenuItem4);
+        btnAlterarMedico.setText("Alterar");
+        jMenu1.add(btnAlterarMedico);
 
-        jMenuItem7.setText("Listar");
-        jMenu1.add(jMenuItem7);
+        btnListarMedicos.setText("Listar");
+        jMenu1.add(btnListarMedicos);
 
-        jMenuItem8.setText("Deletar");
-        jMenu1.add(jMenuItem8);
+        btnDeletarMedico.setText("Deletar");
+        btnDeletarMedico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeletarMedicoActionPerformed(evt);
+            }
+        });
+        jMenu1.add(btnDeletarMedico);
 
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Pacientes");
+        btnCadastrarPaciente.setText("Pacientes");
 
         jMenuItem2.setText("Cadastrar");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
@@ -101,37 +106,37 @@ public class Tela extends javax.swing.JFrame {
                 jMenuItem2ActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem2);
+        btnCadastrarPaciente.add(jMenuItem2);
 
-        jMenuItem5.setText("Alterar");
-        jMenu2.add(jMenuItem5);
+        btnAlterarPaciente.setText("Alterar");
+        btnCadastrarPaciente.add(btnAlterarPaciente);
 
-        jMenuItem9.setText("Listar");
-        jMenu2.add(jMenuItem9);
+        btnListarPacientes.setText("Listar");
+        btnCadastrarPaciente.add(btnListarPacientes);
 
-        jMenuItem11.setText("Deletar");
-        jMenu2.add(jMenuItem11);
+        btnDeletarPaciente.setText("Deletar");
+        btnCadastrarPaciente.add(btnDeletarPaciente);
 
-        jMenuBar1.add(jMenu2);
+        jMenuBar1.add(btnCadastrarPaciente);
 
         jMenu3.setText("Agendamentos de Consultas");
 
-        jMenuItem3.setText("Cadastrar");
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+        btnCadastrarConsulta.setText("Cadastrar");
+        btnCadastrarConsulta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
+                btnCadastrarConsultaActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItem3);
+        jMenu3.add(btnCadastrarConsulta);
 
-        jMenuItem6.setText("Alterar");
-        jMenu3.add(jMenuItem6);
+        btnAlterarConsulta.setText("Alterar");
+        jMenu3.add(btnAlterarConsulta);
 
-        jMenuItem10.setText("Listar");
-        jMenu3.add(jMenuItem10);
+        btnListarConsultas.setText("Listar");
+        jMenu3.add(btnListarConsultas);
 
-        jMenuItem12.setText("Deletar");
-        jMenu3.add(jMenuItem12);
+        btnDeletarConsulta.setText("Deletar");
+        jMenu3.add(btnDeletarConsulta);
 
         jMenuBar1.add(jMenu3);
 
@@ -154,9 +159,9 @@ public class Tela extends javax.swing.JFrame {
 
     private void btnCadastrarMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarMedicoActionPerformed
         // TODO add your handling code here:
-        Tela telaCadastroMedico = new Tela();
-        Desktop.add(telaCadastroMedico);
-        telaCadastroMedico.setVisible(true);
+        TelaCadastroMedico CadMedico = new TelaCadastroMedico();
+        Desktop.add(CadMedico);
+        CadMedico.setVisible(true);
         
     }//GEN-LAST:event_btnCadastrarMedicoActionPerformed
 
@@ -164,9 +169,19 @@ public class Tela extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+    private void btnCadastrarConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarConsultaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
+        TelaCadastroPaciente CadPaciente = new TelaCadastroPaciente();
+        Desktop.add(CadPaciente);
+        CadPaciente.setVisible(true);
+    }//GEN-LAST:event_btnCadastrarConsultaActionPerformed
+
+    private void btnDeletarMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletarMedicoActionPerformed
+        // TODO add your handling code here:
+        TelaDeletarMedico DelMedico = new TelaDeletarMedico();
+        Desktop.add(DelMedico);
+        DelMedico.setVisible(true);
+    }//GEN-LAST:event_btnDeletarMedicoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -205,22 +220,22 @@ public class Tela extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane Desktop;
+    private javax.swing.JMenuItem btnAlterarConsulta;
+    private javax.swing.JMenuItem btnAlterarMedico;
+    private javax.swing.JMenuItem btnAlterarPaciente;
+    private javax.swing.JMenuItem btnCadastrarConsulta;
     private javax.swing.JMenuItem btnCadastrarMedico;
+    private javax.swing.JMenu btnCadastrarPaciente;
+    private javax.swing.JMenuItem btnDeletarConsulta;
+    private javax.swing.JMenuItem btnDeletarMedico;
+    private javax.swing.JMenuItem btnDeletarPaciente;
+    private javax.swing.JMenuItem btnListarConsultas;
+    private javax.swing.JMenuItem btnListarMedicos;
+    private javax.swing.JMenuItem btnListarPacientes;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem10;
-    private javax.swing.JMenuItem jMenuItem11;
-    private javax.swing.JMenuItem jMenuItem12;
     private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JMenuItem jMenuItem8;
-    private javax.swing.JMenuItem jMenuItem9;
     // End of variables declaration//GEN-END:variables
 }

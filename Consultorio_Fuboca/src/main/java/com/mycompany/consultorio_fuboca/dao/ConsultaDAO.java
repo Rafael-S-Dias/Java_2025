@@ -80,4 +80,60 @@ public class ConsultaDAO {
             e.printStackTrace();
         }
     }
+    
+     public ArrayList<Consulta> buscarPorData(String data) {
+        ArrayList<Consulta> lista = new ArrayList<>();
+        String sql = "SELECT * FROM consulta WHERE Data LIKE ?";
+
+        try (Connection conn = ConexaoMySQL.conectar();
+            PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, "%" + data + "%");
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                Consulta c = new Consulta(
+                    rs.getInt("idConsulta"),
+                    rs.getString("observacao"),
+                    rs.getDate("data").toLocalDate(),
+                    rs.getTime("hora").toLocalTime(),
+                    rs.getInt("idPaciente"),
+                    rs.getInt("idMedico")
+                );
+                lista.add(c);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return lista;
+    }
+    /*
+     public ArrayList<Paciente> buscarPorNomePaciente(String idPaciente) {
+        ArrayList<Paciente> lista = new ArrayList<>();
+        String sql = "SELECT * FROM paciente WHERE idPaciente LIKE ?";
+
+        try (Connection conn = ConexaoMySQL.conectar();
+            PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, "%" + idPaciente + "%");
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                Paciente p = new Paciente(
+                    rs.getInt("idPaciente"),
+                    rs.getString("cpf"),
+                    rs.getString("ddd"),
+                    rs.getString("numTelefone"),
+                    rs.getString("primeiroNomePaciente"),
+                    rs.getString("nomeDoMeioPaciente"),
+                    rs.getString("ultimoNomePaciente")
+                );
+                lista.add(p);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return lista;
+    }
+*/
 }

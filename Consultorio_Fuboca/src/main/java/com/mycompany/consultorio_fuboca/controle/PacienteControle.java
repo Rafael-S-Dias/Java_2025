@@ -17,8 +17,8 @@ public class PacienteControle {
 
     private PacienteDAO dao = new PacienteDAO();
 
-    public void cadastrar(String nomePaciente, String cpf, String ddd, String numTelefone, String primeiroNome, String nomeDoMeio, String ultimoNome) {
-        Paciente p = new Paciente(nomePaciente, cpf, ddd, numTelefone, primeiroNome, nomeDoMeio, ultimoNome);
+    public void cadastrar(String cpf, String ddd, String numTelefone, String primeiroNome, String nomeDoMeio, String ultimoNome) {
+        Paciente p = new Paciente(cpf, ddd, numTelefone, primeiroNome, nomeDoMeio, ultimoNome);
         dao.inserir(p);
     }
 
@@ -26,8 +26,8 @@ public class PacienteControle {
         return dao.listar();
     }
 
-    public void atualizar(int idPaciente, String nomePaciente, String cpf, String ddd, String numTelefone, String primeiroNome, String nomeDoMeio, String ultimoNome) {
-        Paciente p = new Paciente(idPaciente, nomePaciente, cpf, ddd, numTelefone, primeiroNome, nomeDoMeio, ultimoNome);
+    public void atualizar(int idPaciente, String cpf, String ddd, String numTelefone, String primeiroNome, String nomeDoMeio, String ultimoNome) {
+        Paciente p = new Paciente(idPaciente, cpf, ddd, numTelefone, primeiroNome, nomeDoMeio, ultimoNome);
         dao.atualizar(p);
     }
 
@@ -35,7 +35,7 @@ public class PacienteControle {
         dao.remover(idPaciente);
     }
 
-    public ArrayList<Paciente> buscarPorNome(String nome) {
-        return dao.buscarPorNome(nome);
+    public ArrayList<Paciente> buscarPorid(String idPaciente) {
+        return dao.buscarPorId(idPaciente);
     }
 }

@@ -33,4 +33,8 @@ public class MedicoControle {
     public void remover(int idMedico) {
         dao.remover(idMedico);
     }
+    
+    public ArrayList<Medico> buscarPorid(String idMedico) {
+        return dao.buscarPorId(idMedico);
+    }
 }

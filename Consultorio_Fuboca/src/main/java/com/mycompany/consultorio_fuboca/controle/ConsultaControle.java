@@ -34,5 +34,9 @@ public class ConsultaControle {
     public void remover(int idConsulta) {
         dao.remover(idConsulta);
     }
+    
+    public ArrayList<Consulta> buscarPorData(String data) {
+        return dao.buscarPorData(data);
+    }
 }
 
